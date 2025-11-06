@@ -1,4 +1,9 @@
-# Analyse de Flux de Données avec Kafka Streams
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+#                   Analyse de Flux de Données avec Kafka Streams
 ## INTRODUCTION 
 
 Cet exercice pratique s'inscrit dans le cadre de l'analyse et de la transformation de données en temps réel, un pilier fondamental du Big Data Processing moderne. Nous allons utiliser Apache Kafka Streams, une librairie cliente pour Kafka, afin de développer une application légère et tolérante aux pannes, capable de traiter des flux de messages de manière continue.
