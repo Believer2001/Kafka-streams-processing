@@ -1,7 +1,7 @@
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](./img/image0-0.png)
+![alt text](./img/image0-1.png)
+![alt text](./img/image0-2.png)
+![alt text](./img/image0-3.png)
 
 #                   Analyse de Flux de Données avec Kafka Streams
 ## INTRODUCTION 
