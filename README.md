@@ -17,6 +17,10 @@ Nous appliquerons la notion de routage conditionnel pour garantir la qualité du
 
 Ce travail permet de maîtriser les concepts essentiels de la gestion des flux d'événements (Event Stream Processing) et de l'implémentation de la logique métier directement dans le flux de données.
 
+
+
+### Exercice 1 : Analyse de Données Météorologiques
+
 ## Préparationde l'espace de travail
 
 On  dispose d'un fichier [**dockerp-compose.yml**](./docker-compose.yml) contenant  un service broker kafka avec ces dépendance nécéssaire :
@@ -144,6 +148,9 @@ Nous passons alors au test
 ![alt text](./img/image-10.png)
 
 
+
+
+
 ## CONCLUSION 
 
 Cet exercice a permis de concrétiser la mise en place d'un pipeline de traitement de flux robuste et résilient en utilisant Apache Kafka Streams.
@@ -158,6 +165,70 @@ Points Clés Réalisés :
    - Maîtrise de l'API Streams : L'exercice a validé la compréhension des concepts de base de Kafka Streams (KStream, filter, map, to), essentiels pour le développement d'applications de Big Data Processing réactives et distribuées.
 
 En définitive, cette implémentation illustre parfaitement comment Kafka Streams peut servir d'épine dorsale pour des architectures de microservices pilotées par les événements, où la logique métier de nettoyage et de validation est intégrée directement au sein du flux de données.
+
+
+## Exercice 2 : Analyse de Données Météorologiques
+
+### Inroduction
+
+Dans le cadre de ce projet, nous cherchons à exploiter les capacités de Kafka Streams pour transformer et analyser en temps réel des données météorologiques provenant de différentes stations. Chaque station publie de façon continue des relevés de température et d'humidité dans un topic Kafka. L’objectif est de construire une application capable de filtrer, transformer et agréger ces informations afin de produire des indicateurs pertinents, comme la température moyenne ou l’humidité moyenne par station. Cette application illustre les concepts fondamentaux du traitement de flux distribués tels que KStream, KGroupedStream et KTable, tout en garantissant une gestion efficace et fiable des données en temps réel.
+
+
+- Pour commencer, nous créeon un nouveau projet [**java maven**](./AnalyseMeto2/) avec la dependance :
+
+```xml
+ <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+    </dependencies>
+
+```
+- Après nous créons le topic **weather-data** :
+![creation topics](image1.png)
+
+- En fin nous créons un dernier topic **average-topic** pour faire   envoyer les sorties :
+![alt text](image1-1.png)
+
+
+Nous traitons les question 1 à 5 dans le fichier [cliquer ici pour le fichier](./AnalyseMeteo2/src/main/java/enset/ma/App1.java)
+
+1. Lecture des données depuis  le topic Kafka 'weather-data' en utilisant un flux (KStream).
+2. Filtre les données de température élevée pour retouner que les temperature suuperieure à 30.0 °C
+
+3. Conversion  des températures en Fahrenheit
+
+4. Groupement des données par station
+- Regroupement des relevés par station
+- Calcule de la température moyenne et le taux d'humidité moyen pour chaque station.
+
+ 5. Envoi des résultats :  Publication des  résultats agrégés dans un nouveau topic Kafka nommé 'station-averages'.
+
+
+### Test de l'application
+
+Nous lançons l'application
+
+ ![alt text](image1-4.png)
+
+Nous lançons  les producer et un consummer comme le montre l'image suivante :
+![alt text](image1-3.png)
+
+Et nous faisons  commençcons  par produire les données suivantes  : 
+Données dans le topic weather-data :
+Station1,25.3,60
+Station2,35.0,50
+Station2,40.0,45
+Station1,32.0,70
+
+
+
+### Conclusion
+
+En résumé, l’application Kafka Streams développée permet de traiter efficacement les données météorologiques en temps réel. Elle lit les messages bruts, filtre les relevés pertinents, convertit les valeurs nécessaires, puis regroupe et agrège les données par station pour produire des moyennes utiles. Les résultats finaux sont ensuite publiés dans un nouveau topic Kafka, facilitant ainsi leur consommation par d’autres services ou tableaux de bord. Ce projet met en pratique les principes essentiels du traitement de données en streaming et constitue une base solide pour des analyses météorologiques plus avancées.
+
 
 
 
