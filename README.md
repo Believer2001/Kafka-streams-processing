@@ -187,10 +187,10 @@ Dans le cadre de ce projet, nous cherchons à exploiter les capacités de Kafka 
 
 ```
 - Après nous créons le topic **weather-data** :
-![creation topics](image1.png)
+![creation topics](./img/image1.png)
 
 - En fin nous créons un dernier topic **average-topic** pour faire   envoyer les sorties :
-![alt text](image1-1.png)
+![alt text](./img/image1-1.png)
 
 
 Nous traitons les question 1 à 5 dans le fichier [cliquer ici pour le fichier](./AnalyseMeteo2/src/main/java/enset/ma/App1.java)
@@ -211,10 +211,10 @@ Nous traitons les question 1 à 5 dans le fichier [cliquer ici pour le fichier](
 
 Nous lançons l'application
 
- ![alt text](image1-4.png)
+ ![alt text](./img/image1-4.png)
 
 Nous lançons  les producer et un consummer comme le montre l'image suivante :
-![alt text](image1-3.png)
+![alt text](./img/image1-3.png)
 
 Et nous faisons  commençcons  par produire les données suivantes  : 
 Données dans le topic weather-data :
